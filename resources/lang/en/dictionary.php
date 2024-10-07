@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\map;
+
 return [
     'login' => [
         'email' => 'Email',
@@ -8,14 +10,17 @@ return [
         'forgot_password' => 'Forgot your password?',
         'login' => 'Log in',
     ],
+
     'register' => [
         'name' => 'Name',
         'email' => 'Email',
         'password' => 'Password',
         'confirm_password' => 'Confirm password',
+        'disclaimer' => '',
         'already_registered' => 'Already registered?',
         'register' => 'Register' 
     ],
+
     'navigation-menu' => [
         'dashboard' => 'Dashboard',
         'bills' => 'Bills',
@@ -30,7 +35,127 @@ return [
         'api_tokens' => 'API Tokens',
         'log_out' => 'Log out'
     ],
+
     'show' => [
         'profile' => 'Profile',
-    ]
+    ],
+    
+    'update-profile-information-form' => [
+        'title' => 'Profile Information',
+        'description' => 'Update your account\'s profile information and email address.',
+        'photo' => 'Photo',
+        'new_photo' => 'Select a new photo',
+        'remove_photo' => 'Remove photo',
+        'name' => 'Name',
+        'email' => 'Email',
+        'email_unverified' => 'Your email address is unverified.',
+        'email_verify' => 'Click here to re-send the verification email.',
+        'email_verify_sent' => 'A new verification link has been sent to your email address.',
+        'saved' => 'Saved',
+        'save' => 'Save'
+    ],
+
+    'update-password-form' => [
+        'title' => 'Update Password',
+        'description' => 'Ensure your account is using a long, random password to stay secure.',
+        'current_password' => 'Current Password',
+        'new_password' => 'New Password',
+        'confirm_password' => 'Confirm Password',
+        'saved' => 'Saved.',
+        'save' => 'Save'
+    ],
+
+    'two-factor-authentication-form' => [
+        'title' => 'Two Factor Authentication',
+        'description' => 'Add additional security to your account using two factor authentication.',
+        'finish_enabling' => 'Finish enabling two factor authentication.',
+        'enable_confirmation' => 'You have enabled two factor authentication.',
+        'not_enabled' => 'You have not enabled two factor authentication.',
+        'elaboration' => 'When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.',
+        'code_prompt' => 'To finish enabling two factor authentication, scan the following QR code using your phone\'s authenticator application or enter the setup key and provide the generated OTP code.',
+        'confirmation' => 'Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application or enter the setup key.',
+        'setup_key' => 'Setup key',
+        'code' => 'Code',
+        'codes_disclaimer' => 'Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.',
+        'enable' => 'Enable',
+        'regenerate' => 'Regenerate Recovery Codes',
+        'confirm' => 'Confirm',
+        'show' => 'Show Recovery Codes',
+        'cancel' => 'Cancel',
+        'disable' => 'Disable',
+    ],
+
+    'logout-other-browser-sessions-form' => [
+        'title' => 'Browser Sessions',
+        'description' => 'Manage and log out your active sessions on other browsers and devices.',
+        'content' => 'If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.',
+        'unknown' => 'Unknown',
+        'this_device' => 'This device',
+        'last_active' => 'Last active',
+        'log_out' => 'Log Out Other Browser Sessions',
+        'done' => 'Done.',
+        'password_disclaimer' => 'Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.',
+        'password' => 'Password',
+        'cancel' => 'Cancel',
+    ],
+
+    'delete-user-form' => [
+        'title' => 'Delete Account',
+        'description' => 'Permanently delete your account.',
+        'content' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
+        'disclaimer' => 'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
+        'password' => 'Password',
+        'cancel' => 'Cancel',
+    ],
+
+    'update-user-password' => [
+        'mismatch' => 'The provided password does not match your current password.',
+    ],
+
+    'bills' => [
+        'title' => 'Bills',
+    ],
+
+    'dashboard' => [
+        'title' => 'Dashboard',
+    ],
+
+    'payments' => [
+        'title' => 'Payments',
+    ],
+
+    'reads' => [
+        'title' => 'Meter Reads',
+    ],
+
+    'api-token-manager' => [
+        'title' => 'Create API token',
+        'description' => 'API tokens allow third-party services to authenticate with our application on your behalf.',
+        'token_name' => 'Token name',
+        'permissions' => 'Permissions',
+        'created' => 'Created.',
+        'create' => 'Create',
+        'manage' => 'Manage API tokens',
+        'manage_description' => 'You may delete any of your existing tokens if they are no longer needed.',
+        'last_used' => 'Last Used',
+        'delete' => 'Delete',
+        'token' => 'API token',
+        'token_disclaimer' => 'Please copy your new API token. For your security, it won\'t be shown again.',
+        'close' => 'Close',
+        'token_permissions' => 'API token permissions',
+        'cancel' => 'Cancel',
+        'save' => 'Save',
+        'token_delete' => 'Delete API Token',
+        'delete_confirmation' => 'Are you sure you would like to delete this API token?',
+    ],
+
+    'index' => [
+        'api_tokens' => 'API tokens',
+    ],
+
+    'confirm-password' => [
+        'disclaimer' => 'This is a secure area of the application. Please confirm your password before continuing.',
+        'confirm' => 'Confirm',
+        'password' => 'Password',
+    ],
 ];
