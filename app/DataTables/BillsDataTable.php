@@ -29,7 +29,8 @@ class BillsDataTable extends DataTable
      */
     public function query(BillingTransaction $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()
+            ->where('transaction_type', 'bill');
     }
 
     /**
@@ -66,9 +67,15 @@ class BillsDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('account_number')->title('Billing Reference'),
+            Column::make('reference')->title('Invoice number'),
+            Column::make('bill_period_from')->title('Period start'),
+            Column::make('bill_period_to')->title('Period end'),
+            Column::make('invoice_date')->title('Invoice date'),
+            Column::make('net')->title('Net'),
+            Column::make('vat')->title('VAT'),
+            Column::make('gross')->title('Gross'),
+            Column::make('due_date')->title('Due by'),
         ];
     }
 

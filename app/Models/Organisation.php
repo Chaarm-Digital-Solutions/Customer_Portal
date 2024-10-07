@@ -23,7 +23,7 @@ class Organisation extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'organisation_user', 'user_id', 'organisation_id');
     }
 
     /**
