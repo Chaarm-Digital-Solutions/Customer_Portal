@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
-class Read extends Model
+class BillingTransaction extends Model
 {
     use HasFactory;
+
 
     // Relationships
 
     /**
-     * Get the organisation the read belongs to
+     * Get organisation the transaction belongs to 
      * 
      * @return BelongsTo
      */
