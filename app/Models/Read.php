@@ -10,6 +10,9 @@ class Read extends Model
 {
     use HasFactory;
 
+    protected $connection = 'mysql_mds';
+    protected $table = 'mds_reads';
+
     // Relationships
 
     /**

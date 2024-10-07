@@ -10,8 +10,8 @@ class BillingTransaction extends Model
 {
     use HasFactory;
 
-    protected $connection = '';
-
+    protected $connection = 'mysql_wcrm';
+    protected $table = 'billing_transactions';
 
     // Relationships
 
@@ -22,6 +22,6 @@ class BillingTransaction extends Model
      */
     public function organisation(): BelongsTo
     {
-        return $this->belongsTo(Organisation::class);
+        return $this->belongsTo(Organisation::class, 'account_number', 'sfAccountNumber');
     }
 }

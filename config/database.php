@@ -64,11 +64,11 @@ return [
 
         'mysql_wcrm' => [
             'driver' => 'mysql',
-            'host' => env('DB_SECONDARY_HOST', '127.0.0.1'),
-            'port' => env('DB_SECONDARY_PORT', '3306'),
-            'database' => env('DB_SECONDARY_DATABASE', 'secondary_db'),
-            'username' => env('DB_SECONDARY_USERNAME', 'forge'),
-            'password' => env('DB_SECONDARY_PASSWORD', ''),
+            'host' => env('DB_HOST_WCRM', '127.0.0.1'),
+            'port' => env('DB_PORT_WCRM', '3306'),
+            'database' => env('DB_DATABASE_WCRM', 'secondary_db'),
+            'username' => env('DB_USERNAME_WCRM', 'forge'),
+            'password' => env('DB_PASSWORD_WCRM', ''),
             'unix_socket' => env('DB_SECONDARY_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -79,11 +79,11 @@ return [
 
         'mysql_mds' => [
             'driver' => 'mysql',
-            'host' => env('DB_SECONDARY_HOST', '127.0.0.1'),
-            'port' => env('DB_SECONDARY_PORT', '3306'),
-            'database' => env('DB_SECONDARY_DATABASE', 'secondary_db'),
-            'username' => env('DB_SECONDARY_USERNAME', 'forge'),
-            'password' => env('DB_SECONDARY_PASSWORD', ''),
+            'host' => env('DB_HOST_MDS', '127.0.0.1'),
+            'port' => env('DB_PORT_MDS', '3306'),
+            'database' => env('DB_DATABASE_MDS', 'secondary_db'),
+            'username' => env('DB_USERNAME_MDS', 'forge'),
+            'password' => env('DB_PASSWORD_MDS', ''),
             'unix_socket' => env('DB_SECONDARY_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

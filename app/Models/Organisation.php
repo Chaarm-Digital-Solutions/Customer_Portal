@@ -11,6 +11,9 @@ class Organisation extends Model
 {
     use HasFactory;
 
+    protected $connection = 'mysql_wcrm';
+    protected $table = 'billing_transactions';
+
     // Relationships
     
     /**

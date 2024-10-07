@@ -2,14 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Bill;
+use App\Models\BillingTransaction;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class BillsDataTable extends DataTable
@@ -29,7 +27,7 @@ class BillsDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(Bill $model): QueryBuilder
+    public function query(BillingTransaction $model): QueryBuilder
     {
         return $model->newQuery();
     }
