@@ -153,7 +153,7 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Are you sure you would like to delete this API token?') }}
+            {{ __('dictionary.api-token-manager.delete_confirmation') }}
         </x-slot>
 
         <x-slot name="footer">

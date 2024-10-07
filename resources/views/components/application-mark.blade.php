@@ -1,1 +1,1 @@
-<img src="https://smartawater.com/wp-content/uploads/2018/03/smarta-water-logo.png" alt="Smarta Water Logo" {{ $attributes }}>
+<img src="{{ env('APP_LOGO_URL', '') }}" alt="{{ env('APP_COMPANY_NAME', '') }}" {{ $attributes }}>

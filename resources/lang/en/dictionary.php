@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\map;
-
 return [
     'login' => [
         'email' => 'Email',
@@ -16,7 +14,9 @@ return [
         'email' => 'Email',
         'password' => 'Password',
         'confirm_password' => 'Confirm password',
-        'disclaimer' => '',
+        'disclaimer' => 'I agree to the :terms_of_service and :privacy_policy',
+        'disclaimer_tos' => 'Terms of Service',
+        'disclaimer_privacy' => 'Privacy Policy',
         'already_registered' => 'Already registered?',
         'register' => 'Register' 
     ],
@@ -157,5 +157,58 @@ return [
         'disclaimer' => 'This is a secure area of the application. Please confirm your password before continuing.',
         'confirm' => 'Confirm',
         'password' => 'Password',
+    ],
+
+    'forgot-password' => [
+        'disclaimer' => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.',
+        'email' => 'Email',
+        'send_link' => 'Email Password Reset Link',
+    ],
+
+    'reset-password' => [
+        'email' => 'Email',
+        'password' => 'Password',
+        'confirm_password' => 'Confirm password',
+        'reset_password' => 'Reset password',
+    ],
+
+    'two-factor-challenge' => [
+        'authentication_description' => 'Please confirm access to your account by entering the authentication code provided by your authenticator application.',
+        'recovery_description' => 'Please confirm access to your account by entering one of your emergency recovery codes.',
+        'code' => 'Code',
+        'recovery_code' => 'Recovery code',
+        'use_recovery' => 'Use a recovery code',
+        'use_authentication' => 'Use an authentication code',
+        'log_in' => 'Log in',
+    ],
+
+    'verify-email' => [
+        'description' => 'Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.',
+        'link_sent' => 'A new verification link has been sent to the email address you provided in your profile settings.',
+        'link_resend' => 'Resend Verification Email',
+        'edit_profile' => 'Edit profile',
+        'log_out' => 'Log out',
+    ],
+
+    'confirms-password' => [
+        'password_confirm' => 'Confirm password',
+        'content' => 'For your security, please confirm your password to continue.',
+        'password' => 'Password',
+        'confirm' => 'Confirm',
+        'cancel' => 'Cancel',
+    ],
+
+    'validation-errors' => [
+        'error' => 'Whoops! Something went wrong.',
+    ],
+
+    'team-invitation' => [
+        'invitation' => 'You have been invited to join the :team team!',
+        'register' => 'If you do not have an account, you may create one by clicking the button below. After creating an account, you may click the invitation acceptance button in this email to accept the team invitation:',
+        'create_account' => 'Create account',
+        'register_accept' => 'If you already have an account, you may accept this invitation by clicking the button below:',
+        'invite_accept' => 'You may accept this invitation by clicking the button below:',
+        'accept' => 'Accept invitation',
+        'discard' => 'If you did not expect to receive an invitation to this team, you may discard this email.',
     ],
 ];
