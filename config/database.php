@@ -62,6 +62,36 @@ return [
             ]) : [],
         ],
 
+        'mysql_wcrm' => [
+            'driver' => 'mysql',
+            'host' => env('DB_SECONDARY_HOST', '127.0.0.1'),
+            'port' => env('DB_SECONDARY_PORT', '3306'),
+            'database' => env('DB_SECONDARY_DATABASE', 'secondary_db'),
+            'username' => env('DB_SECONDARY_USERNAME', 'forge'),
+            'password' => env('DB_SECONDARY_PASSWORD', ''),
+            'unix_socket' => env('DB_SECONDARY_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
+        'mysql_mds' => [
+            'driver' => 'mysql',
+            'host' => env('DB_SECONDARY_HOST', '127.0.0.1'),
+            'port' => env('DB_SECONDARY_PORT', '3306'),
+            'database' => env('DB_SECONDARY_DATABASE', 'secondary_db'),
+            'username' => env('DB_SECONDARY_USERNAME', 'forge'),
+            'password' => env('DB_SECONDARY_PASSWORD', ''),
+            'unix_socket' => env('DB_SECONDARY_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

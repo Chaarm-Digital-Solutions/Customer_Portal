@@ -10,6 +10,8 @@ class BillingTransaction extends Model
 {
     use HasFactory;
 
+    protected $connection = '';
+
 
     // Relationships
 
