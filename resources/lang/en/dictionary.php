@@ -4,20 +4,22 @@ return [
     'api-token-manager' => [
         'cancel' => 'Cancel',
         'close' => 'Close',
-        'create' => 'Create',
         'created' => 'Created.',
+        'create' => 'Create',
         'delete' => 'Delete',
         'delete_confirmation' => 'Are you sure you would like to delete this API token?',
+        'description' => 'API tokens allow third-party services to authenticate with our application on your behalf.',
+        'last_used' => 'Last Used',
         'manage' => 'Manage API tokens',
         'manage_description' => 'You may delete any of your existing tokens if they are no longer needed.',
         'permissions' => 'Permissions',
+        'save' => 'Save',
         'token' => 'API token',
         'token_delete' => 'Delete API Token',
         'token_disclaimer' => 'Please copy your new API token. For your security, it won\'t be shown again.',
         'token_name' => 'Token name',
         'token_permissions' => 'API token permissions',
-        'last_used' => 'Last Used',
-        'save' => 'Save',
+        'title' => 'Create API token',
     ],
 
     'bills' => [
@@ -38,16 +40,17 @@ return [
         'password_confirm' => 'Confirm password',
     ],
 
+    'dashboard' => [
+        'title' => 'Dashboard',
+    ],
+
     'delete-user-form' => [
         'cancel' => 'Cancel',
         'content' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
         'description' => 'Permanently delete your account.',
         'disclaimer' => 'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
         'password' => 'Password',
-    ],
-
-    'dashboard' => [
-        'title' => 'Dashboard',
+        'title' => 'Delete Account',
     ],
 
     'forgot-password' => [
@@ -60,6 +63,14 @@ return [
         'api_tokens' => 'API tokens',
     ],
 
+    'login' => [
+        'email' => 'Email',
+        'forgot_password' => 'Forgot your password?',
+        'login' => 'Log in',
+        'password' => 'Password',
+        'remember_me' => 'Remember me',
+    ],
+
     'logout-other-browser-sessions-form' => [
         'cancel' => 'Cancel',
         'content' => 'If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.',
@@ -70,15 +81,8 @@ return [
         'password' => 'Password',
         'password_disclaimer' => 'Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.',
         'this_device' => 'This device',
+        'title' => 'Browser Sessions',
         'unknown' => 'Unknown',
-    ],
-
-    'login' => [
-        'email' => 'Email',
-        'forgot_password' => 'Forgot your password?',
-        'login' => 'Log in',
-        'password' => 'Password',
-        'remember_me' => 'Remember me',
     ],
 
     'navigation-menu' => [
@@ -141,7 +145,7 @@ return [
         'cancel' => 'Cancel',
         'code' => 'Code',
         'code_prompt' => 'To finish enabling two factor authentication, scan the following QR code using your phone\'s authenticator application or enter the setup key and provide the generated OTP code.',
-        'codes_disclaimer' => 'Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.',
+        'confirmation' => 'Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application or enter the setup key.',
         'confirm' => 'Confirm',
         'disable' => 'Disable',
         'elaboration' => 'When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.',
@@ -152,6 +156,8 @@ return [
         'regenerate' => 'Regenerate Recovery Codes',
         'setup_key' => 'Setup key',
         'show' => 'Show Recovery Codes',
+        'title' => 'Two Factor Authentication',
+        'codes_disclaimer' => 'Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.',
     ],
 
     'two-factor-challenge' => [
@@ -165,17 +171,16 @@ return [
     ],
 
     'update-password-form' => [
-        'cancel' => 'Cancel',
         'confirm_password' => 'Confirm Password',
         'current_password' => 'Current Password',
         'description' => 'Ensure your account is using a long, random password to stay secure.',
         'new_password' => 'New Password',
-        'saved' => 'Saved.',
         'save' => 'Save',
+        'saved' => 'Saved.',
+        'title' => 'Update Password',
     ],
 
     'update-profile-information-form' => [
-        'cancel' => 'Cancel',
         'description' => 'Update your account\'s profile information and email address.',
         'email' => 'Email',
         'email_unverified' => 'Your email address is unverified.',
@@ -185,8 +190,8 @@ return [
         'new_photo' => 'Select a new photo',
         'photo' => 'Photo',
         'remove_photo' => 'Remove photo',
-        'saved' => 'Saved',
         'save' => 'Save',
+        'saved' => 'Saved',
         'title' => 'Profile Information',
     ],
 
@@ -194,7 +199,7 @@ return [
         'mismatch' => 'The provided password does not match your current password.',
     ],
 
-    'validate-errors' => [
+    'validation-errors' => [
         'error' => 'Whoops! Something went wrong.',
     ],
 
