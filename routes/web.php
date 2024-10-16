@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BillingTransactionController;
+use App\Http\Controllers\ReadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,15 +17,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/bills', function () {
-        return view('bills');
-    })->name('bills');
-
-    Route::get('/payments', function () {
-        return view('payments');
-    })->name('payments');
-
-    Route::get('/reads', function () {
-        return view('reads');
-    })->name('reads');
+    Route::get('/bills', [BillingTransactionController::class, 'viewBills'])->name('bills');
+    Route::get('/payments', [BillingTransactionController::class, 'viewPayments'])->name('payments');
+    Route::get('/reads', [ReadController::class, 'view'])->name('reads');
 });

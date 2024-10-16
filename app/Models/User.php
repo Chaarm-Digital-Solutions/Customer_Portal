@@ -20,6 +20,11 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    /**
+     * Database to be used by this model
+     * 
+     * @var string
+     */
     protected $connection ='mysql';
 
     /**
