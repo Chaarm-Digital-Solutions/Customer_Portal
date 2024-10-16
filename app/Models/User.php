@@ -83,10 +83,11 @@ class User extends Authenticatable
     {
         $database = $this->getConnection()->getDatabaseName();
         return $this->belongsToMany(
-            Organisation::class,    // The related model (from a different database connection)
-            "$database.organisation_user",    // The pivot table (in the local database)
-            'user_id',              // Foreign key in the pivot table referencing the User
-            'organisation_id'       // Foreign key in the pivot table referencing the Organisation
-        )->using(OrganisationUser::class); // Custom pivot model to enforce local connection
+            Organisation::class,
+            "$database.organisation_user",
+            'user_id',
+            'organisation_id'
+        )->using(OrganisationUser::class);
     }
+
 }

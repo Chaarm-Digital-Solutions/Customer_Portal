@@ -29,12 +29,12 @@ class BillsDataTable extends DataTable
      */
     public function query(BillingTransaction $model): QueryBuilder
     {
-        $user = Auth::user()->id;
+        $userId = Auth::id();
 
         return $model->newQuery()
             ->with('organisation')
-            ->whereHas('organisation.users', function ($query) use ($user) {
-                $query->where('id', $user);
+            ->whereHas('organisation.users', function ($query) use ($userId) {
+                $query->where('users.id', $userId);
             })
             ->where('transaction_type', 'bill');
     }
@@ -52,7 +52,7 @@ class BillsDataTable extends DataTable
                             'dataTable' => 'bills',
                         ]
                     ])
-                    ->orderBy(0)
+                    ->orderBy(4)
                     ->selectStyleSingle();
     }
 
@@ -62,7 +62,6 @@ class BillsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
             Column::make('account_number')->title('Billing Reference'),
             Column::make('reference')->title('Invoice number'),
             Column::make('bill_period_from')->title('Period start'),

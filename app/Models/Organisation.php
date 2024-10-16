@@ -43,12 +43,13 @@ class Organisation extends Model
      */
     public function users(): BelongsToMany
     {
+        $database = config('database.connections.' . config('database.default') . '.database');
         return $this->belongsToMany(
-            User::class,            // The related model (from the local database)
-            'organisation_user',    // The pivot table (in the local database)
-            'organisation_id',      // Foreign key in the pivot table referencing the Organisation
-            'user_id'               // Foreign key in the pivot table referencing the User
-        )->using(OrganisationUser::class); // Custom pivot model to enforce local connection
+            User::class,
+            "$database.organisation_user",
+            'organisation_id',
+            'user_id'
+        )->using(OrganisationUser::class);
     }
 
     /**
@@ -58,7 +59,7 @@ class Organisation extends Model
      */
     public function billing_transactions(): HasMany
     {
-        return $this->hasMany(BillingTransaction::class, 'account_number', 'sfAccountNumber');
+        return $this->hasMany(BillingTransaction::class, 'account_number', 'billingAccountReference');
     }
 
     /**

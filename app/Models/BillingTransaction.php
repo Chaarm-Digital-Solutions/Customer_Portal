@@ -42,6 +42,6 @@ class BillingTransaction extends Model
      */
     public function organisation(): BelongsTo
     {
-        return $this->belongsTo(Organisation::class, 'account_number', 'sfAccountNumber');
+        return $this->belongsTo(Organisation::class, 'account_number', 'billingAccountReference');
     }
 }
