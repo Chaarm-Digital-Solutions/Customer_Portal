@@ -43,7 +43,9 @@ class Organisation extends Model
      */
     public function users(): BelongsToMany
     {
-        $database = config('database.connections.' . config('database.default') . '.database');
+        // $database = config('database.connections.' . config('database.default') . '.database');
+        $database = env('DB_DATABASE');
+
         return $this->belongsToMany(
             User::class,
             "$database.organisation_user",

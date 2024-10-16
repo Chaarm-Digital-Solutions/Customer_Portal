@@ -81,7 +81,8 @@ class User extends Authenticatable
      */
     public function organisations(): BelongsToMany
     {
-        $database = $this->getConnection()->getDatabaseName();
+        $database = env('DB_DATABASE');
+
         return $this->belongsToMany(
             Organisation::class,
             "$database.organisation_user",
