@@ -4,12 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\OrganisationUser;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,8 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    protected $connection ='mysql';
 
     /**
      * The attributes that are mass assignable.
@@ -69,10 +72,16 @@ class User extends Authenticatable
     /**
      * Get the organisations assigned to the user
      * 
-     * @return HasMany
+     * @return BelongsToMany
      */
-    public function organisations(): HasMany
+    public function organisations(): BelongsToMany
     {
-        return $this->hasMany(Organisation::class);
+        $database = $this->getConnection()->getDatabaseName();
+        return $this->belongsToMany(
+            Organisation::class,    // The related model (from a different database connection)
+            "$database.organisation_user",    // The pivot table (in the local database)
+            'user_id',              // Foreign key in the pivot table referencing the User
+            'organisation_id'       // Foreign key in the pivot table referencing the Organisation
+        )->using(OrganisationUser::class); // Custom pivot model to enforce local connection
     }
 }
