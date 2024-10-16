@@ -15,10 +15,11 @@ class BillingTransactionController extends Controller
      */
     public function viewBills(): View
     {
-        $dataTable = new BillsDataTable;
+        $billsDataTable = new BillsDataTable;
+        $dataTables = ['bills' => $billsDataTable->html()];
 
         return view('bills', [
-            'dataTable' => $dataTable->html(),
+            'dataTables' => $dataTables,
         ]);
     }
 
@@ -29,10 +30,11 @@ class BillingTransactionController extends Controller
      */
     public function viewPayments(): View
     {
-        $dataTable = new PaymentsDataTable;
+        $paymentsDataTable = new PaymentsDataTable;
+        $dataTables = ['payments' => $paymentsDataTable->html()];
 
         return view('payments', [
-            'dataTable' => $dataTable->html(),
+            'dataTable' => $dataTables,
         ]);
     }
 }

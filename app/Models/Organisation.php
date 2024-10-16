@@ -12,7 +12,26 @@ class Organisation extends Model
 {
     use HasFactory;
 
+    /**
+     * Database to be used by this model
+     * 
+     * @var string
+     */
     protected $connection = 'mysql_wcrm';
+
+    /**
+     * Table from the specified database to be used by this model
+     * 
+     * @var string
+     */
+    protected $table = 'organisations';
+
+
+    /**
+     * Primary key from the specified table to be used by this model
+     * 
+     * @var string
+     */
     protected $primaryKey = 'organisation_id';
 
     // Relationships
@@ -39,7 +58,7 @@ class Organisation extends Model
      */
     public function billing_transactions(): HasMany
     {
-        return $this->hasMany(BillingTransaction::class);
+        return $this->hasMany(BillingTransaction::class, 'account_number', 'sfAccountNumber');
     }
 
     /**

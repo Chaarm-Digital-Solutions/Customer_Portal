@@ -10,8 +10,28 @@ class BillingTransaction extends Model
 {
     use HasFactory;
 
+    // Connection
+    
+    /**
+     * Database to be used by this model
+     * 
+     * @var string
+     */
     protected $connection = 'mysql_wcrm';
+
+    /**
+     * Table from the specified database to be used by this model
+     * 
+     * @var string
+     */
     protected $table = 'billing_transactions';
+
+    /**
+     * Primary key from the specified table to be used by this model
+     * 
+     * @var string
+     */
+    protected $primaryKey = 'transaction_id';
 
     // Relationships
 

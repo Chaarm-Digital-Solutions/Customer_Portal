@@ -4,9 +4,9 @@ namespace App\DataTables;
 
 use App\Models\BillingTransaction;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
@@ -29,7 +29,13 @@ class BillsDataTable extends DataTable
      */
     public function query(BillingTransaction $model): QueryBuilder
     {
+        $user = Auth::user()->id;
+
         return $model->newQuery()
+            ->with('organisation')
+            ->whereHas('organisation.users', function ($query) use ($user) {
+                $query->where('id', $user);
+            })
             ->where('transaction_type', 'bill');
     }
 
@@ -41,18 +47,13 @@ class BillsDataTable extends DataTable
         return $this->builder()
                     ->setTableId('bills-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+                    ->postAjax([
+                        'data' => [
+                            'dataTable' => 'bills',
+                        ]
+                    ])
+                    ->orderBy(0)
+                    ->selectStyleSingle();
     }
 
     /**
@@ -61,11 +62,6 @@ class BillsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             Column::make('id'),
             Column::make('account_number')->title('Billing Reference'),
             Column::make('reference')->title('Invoice number'),
