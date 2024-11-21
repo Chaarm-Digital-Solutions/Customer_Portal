@@ -28,9 +28,8 @@
                         {{ __('dictionary.navigation-menu.meter_reads') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('gantt_chart') }}" :active="request()->routeIs('gantt_chart')">
-                        {{ __('dictionary.navigation-menu.gantt_chart') }}
-                    </x-nav-link>
+                     <!-- Dynamic Links -->
+                    @stack('navigation-links')
                 </div>
             </div>
 
@@ -134,6 +133,9 @@
                                          @click.prevent="$root.submit();">
                                     {{ __('dictionary.navigation-menu.log_out') }}
                                 </x-dropdown-link>
+
+                                 <!-- Dynamic Responsive Links -->
+                                @stack('responsive-navigation-links')
                             </form>
                         </x-slot>
                     </x-dropdown>
@@ -171,9 +173,6 @@
                 {{ __('dictionary.navigation-menu.meter_reads') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('gantt_chart') }}" :active="request()->routeIs('gantt_chart')">
-                {{ __('dictionary.navigation-menu.gantt_chart') }}
-            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
