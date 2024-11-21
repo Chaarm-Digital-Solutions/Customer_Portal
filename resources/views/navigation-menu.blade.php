@@ -166,6 +166,10 @@
             <x-responsive-nav-link href="{{ route('reads') }}" :active="request()->routeIs('reads')">
                 {{ __('dictionary.navigation-menu.meter_reads') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('gantt_chart') }}" :active="request()->routeIs('gantt_chart')">
+                {{ __('dictionary.navigation-menu.gantt_chart') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

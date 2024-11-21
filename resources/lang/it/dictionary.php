@@ -90,6 +90,7 @@ return [
         'bills' => 'Fatture',
         'create_new_team' => 'Crea nuovo team',
         'dashboard' => 'Pannello di controllo',
+        'gantt_chart' => 'Gantt Chart',
         'log_out' => 'Disconnetti',
         'manage_account' => 'Gestisci account',
         'manage_team' => 'Gestisci team',

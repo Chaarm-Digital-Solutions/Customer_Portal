@@ -90,6 +90,7 @@ return [
         'bills' => 'Bills',
         'create_new_team' => 'Create New Team',
         'dashboard' => 'Dashboard',
+        'gantt_chart' => 'Gantt Chart',
         'log_out' => 'Log out',
         'manage_account' => 'Manage Account',
         'manage_team' => 'Manage Team',
