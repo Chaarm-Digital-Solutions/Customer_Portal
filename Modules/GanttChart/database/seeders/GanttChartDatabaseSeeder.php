@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\GanttChart\Database\Seeders;
+namespace Modules\GanttChart\App\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 

@@ -1,10 +1,12 @@
 <?php
 
-namespace Modules\GanttChart\Providers;
+namespace Modules\GanttChart\app\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
+use Modules\GanttChart\App\Providers\EventServiceProvider;
+use Modules\GanttChart\App\Providers\RouteServiceProvider;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 

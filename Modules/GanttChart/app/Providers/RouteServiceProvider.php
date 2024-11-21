@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\GanttChart\Providers;
+namespace Modules\GanttChart\app\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
