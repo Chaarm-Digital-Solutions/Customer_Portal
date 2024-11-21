@@ -25,6 +25,8 @@
         <!-- Styles -->
         @livewireStyles
         <link href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet" />
+
+        @stack('styles')
     </head>
     <body class="font-sans antialiased">
         <x-banner />
