@@ -27,6 +27,10 @@
                     <x-nav-link href="{{ route('reads') }}" :active="request()->routeIs('reads')">
                         {{ __('dictionary.navigation-menu.meter_reads') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('gantt_chart') }}" :active="request()->routeIs('gantt_chart')">
+                        {{ __('dictionary.navigation-menu.gantt_chart') }}
+                    </x-nav-link>
                 </div>
             </div>
 
