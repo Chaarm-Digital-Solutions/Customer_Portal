@@ -59,6 +59,10 @@ return [
         'send_link' => 'Email Password Reset Link',
     ],
 
+    'gantt-chart' => [
+        'title' => 'Gantt Chart',
+    ],
+
     'index' => [
         'api_tokens' => 'API tokens',
     ],

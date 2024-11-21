@@ -59,6 +59,10 @@ return [
         'send_link' => 'Invia link per il reset della password',
     ],
 
+    'gantt-chart' => [
+        'title' => 'Gantt Chart',
+    ],
+
     'index' => [
         'api_tokens' => 'Token API',
     ],

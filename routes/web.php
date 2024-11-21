@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillingTransactionController;
+use App\Http\Controllers\GanttChartController;
 use App\Http\Controllers\ReadController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,5 @@ Route::middleware([
     Route::get('/bills', [BillingTransactionController::class, 'viewBills'])->name('bills');
     Route::get('/payments', [BillingTransactionController::class, 'viewPayments'])->name('payments');
     Route::get('/reads', [ReadController::class, 'view'])->name('reads');
+    Route::get('/gantt-chart', [GanttChartController::class, 'view'])->name('gantt_chart');
 });
