@@ -15,5 +15,5 @@ use Modules\GanttChart\Http\Controllers\GanttChartController;
 */
 
 Route::group([], function () {
-    Route::resource('ganttchart', GanttChartController::class)->names('ganttchart');
+    Route::get('/ganttchart', GanttChartController::class)->names('ganttchart');
 });
