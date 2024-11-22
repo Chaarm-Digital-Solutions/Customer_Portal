@@ -1,0 +1,11 @@
+{
+    "name": "GanttChart",
+    "alias": "ganttchart",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GanttChart\\Providers\\GanttChartServiceProvider"
+    ],
+    "files": []
+}
