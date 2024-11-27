@@ -4,6 +4,7 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
+    <script src="{{ module_path('GanttChart', 'resources/assets/js/gantt.js') }}"></script>
 @endpush
 <x-app-layout>
     <x-slot name="header">
@@ -19,4 +20,3 @@
         </div>
     </div>
 </x-app-layout>
-<script src="frappe-gantt.min.js" />
