@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\GanttChart\\": "app/",
+            "Modules\\GanttChart\\app\\": "app/",
             "Modules\\GanttChart\\Database\\Factories\\": "database/factories/",
             "Modules\\GanttChart\\Database\\Seeders\\": "database/seeders/"
         }

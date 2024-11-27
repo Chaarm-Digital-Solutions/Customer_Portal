@@ -5,7 +5,7 @@
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\GanttChart\\Providers\\GanttChartServiceProvider"
+        "Modules\\GanttChart\\App\\Providers\\GanttChartServiceProvider"
     ],
     "files": []
 }

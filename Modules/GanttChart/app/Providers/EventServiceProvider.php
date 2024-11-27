@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\GanttChart\Providers;
+namespace Modules\GanttChart\App\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

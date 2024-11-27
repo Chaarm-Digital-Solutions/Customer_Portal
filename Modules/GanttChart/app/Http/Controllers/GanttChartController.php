@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\GanttChart\Http\Controllers;
+namespace Modules\GanttChart\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

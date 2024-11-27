@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\GanttChart\Http\Controllers\GanttChartController;
+use Modules\GanttChart\App\Http\Controllers\GanttChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Modules\GanttChart\Http\Controllers\GanttChartController;
 */
 
 Route::group([], function () {
-    Route::get('/ganttchart', GanttChartController::class)->names('ganttchart');
+    Route::get('/ganttchart', [GanttChartController::class, 'index'])->name('gantt-chart');
 });
