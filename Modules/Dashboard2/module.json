@@ -1,0 +1,11 @@
+{
+    "name": "Dashboard2",
+    "alias": "dashboard2",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Dashboard2\\Providers\\Dashboard2ServiceProvider"
+    ],
+    "files": []
+}
