@@ -15,5 +15,5 @@ use Modules\Dashboard2\App\Http\Controllers\Dashboard2Controller;
 */
 
 Route::group([], function () {
-    Route::get('/', [Dashboard2Controller::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard2', [Dashboard2Controller::class, 'index'])->name('dashboard.index');
 });

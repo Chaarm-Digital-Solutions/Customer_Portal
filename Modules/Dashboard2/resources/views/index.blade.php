@@ -1,26 +1,21 @@
-@extends('layouts.app')
 
-@section('content')
-    <div class="grid-stack">
-        <div class="grid-stack-item" 
-            data-gs-x="0" 
-            data-gs-y="0" 
-            data-gs-width="4" 
-            data-gs-height="2">
-            <div class="grid-stack-item-content">
-                <!-- Widget Content -->
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('dashboard2::dictionary.dashboard2.title') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="grid-stack">
+                </div>
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
 
 @push('scripts')
-    <script type="module">
-    import GridStack from 'gridstack';
-    import 'gridstack/dist/gridstack.min.css';
-
-    document.addEventListener('DOMContentLoaded', () => {
-        GridStack.init();
-    });
-    </script>
+<script src="{{ asset('modules/widgetdashboard/js/gridstack-init.js') }}"></script>
 @endpush
