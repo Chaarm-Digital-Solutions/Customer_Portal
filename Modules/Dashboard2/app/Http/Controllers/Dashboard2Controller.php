@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Dashboard2\Http\Controllers;
+namespace Modules\Dashboard2\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

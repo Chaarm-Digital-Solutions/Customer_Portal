@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Dashboard2\Http\Controllers\Dashboard2Controller;
+use Modules\Dashboard2\App\Http\Controllers\Dashboard2Controller;
 
 /*
  *--------------------------------------------------------------------------

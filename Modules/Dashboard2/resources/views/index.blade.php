@@ -1,7 +1,26 @@
-@extends('dashboard2::layouts.master')
+@extends('layouts.app')
 
 @section('content')
-    <h1>Hello World</h1>
-
-    <p>Module: {!! config('dashboard2.name') !!}</p>
+    <div class="grid-stack">
+        <div class="grid-stack-item" 
+            data-gs-x="0" 
+            data-gs-y="0" 
+            data-gs-width="4" 
+            data-gs-height="2">
+            <div class="grid-stack-item-content">
+                <!-- Widget Content -->
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('scripts')
+    <script type="module">
+    import GridStack from 'gridstack';
+    import 'gridstack/dist/gridstack.min.css';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        GridStack.init();
+    });
+    </script>
+@endpush

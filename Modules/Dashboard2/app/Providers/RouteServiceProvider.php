@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Dashboard2\Providers;
+namespace Modules\Dashboard2\App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

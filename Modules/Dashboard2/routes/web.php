@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Dashboard2\Http\Controllers\Dashboard2Controller;
+use Modules\Dashboard2\App\Http\Controllers\Dashboard2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Modules\Dashboard2\Http\Controllers\Dashboard2Controller;
 */
 
 Route::group([], function () {
-    Route::resource('dashboard2', Dashboard2Controller::class)->names('dashboard2');
+    Route::get('/', [Dashboard2Controller::class, 'index'])->name('dashboard.index');
 });
