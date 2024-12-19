@@ -10,13 +10,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-                <button class="save-grid mb-4 px-4 py-2 bg-blue-500 text-white rounded">
+                <!-- <button class="save-grid mb-4 px-4 py-2 bg-blue-500 text-white rounded">
                     Save Layout
-                </button>
+                </button> -->
                 
                 <div class="grid-stack">
                     <!-- Example widgets -->
-                    <div class="grid-stack-item" gs-x="0" gs-y="0" gs-w="4" gs-h="2">
+                    <!-- <div class="grid-stack-item" gs-x="0" gs-y="0" gs-w="4" gs-h="2">
                         <div class="grid-stack-item-content">
                             Widget 1
                         </div>
@@ -25,7 +25,7 @@
                         <div class="grid-stack-item-content">
                             Widget 2
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
