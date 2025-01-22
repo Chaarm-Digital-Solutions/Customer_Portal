@@ -16,7 +16,7 @@
                 
                 <div class="grid-stack">
                     <!-- Example widgets -->
-                    <!-- <div class="grid-stack-item" gs-x="0" gs-y="0" gs-w="4" gs-h="2">
+                    <div class="grid-stack-item" gs-x="0" gs-y="0" gs-w="4" gs-h="2">
                         <div class="grid-stack-item-content">
                             Widget 1
                         </div>
@@ -25,7 +25,7 @@
                         <div class="grid-stack-item-content">
                             Widget 2
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
