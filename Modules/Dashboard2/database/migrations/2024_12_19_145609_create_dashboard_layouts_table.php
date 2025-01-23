@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('dashboard_layouts', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user');
+            $table->json('config');
             $table->timestamps();
         });
     }
