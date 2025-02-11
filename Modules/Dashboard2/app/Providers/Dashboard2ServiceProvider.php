@@ -2,8 +2,10 @@
 
 namespace Modules\Dashboard2\App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Dashboard2\App\Models\DashboardLayout;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -27,6 +29,10 @@ class Dashboard2ServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        
+        User::resolveRelationUsing('dashboard_layout', function ($user) {
+            return $user->hasOne(DashboardLayout::class);
+        });
     }
 
     /**

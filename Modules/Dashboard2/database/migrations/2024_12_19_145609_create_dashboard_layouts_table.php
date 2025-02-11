@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dashboard_layouts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->json('config');
             $table->timestamps();
         });
