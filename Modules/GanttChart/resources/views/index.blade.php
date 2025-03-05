@@ -1,11 +1,9 @@
-@push('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
-@endpush
+@vite([
+    'resources/js/app.js',  // Main app.js
+    'modules/GanttChart/resources/assets/js/app.js', // Your GanttChart module JS
+    'node_modules/frappe-gantt/dist/frappe-gantt.css' // External CSS file
+])
 
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
-    <script src="{{ module_path('GanttChart', 'resources/assets/js/gantt.js') }}"></script>
-@endpush
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
