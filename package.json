@@ -16,6 +16,6 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "frappe-gantt": "^0.8.1"
+        "frappe-gantt": "^1.0.3"
     }
 }

@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Initialize the Gantt chart on the element with id 'gantt'
-    const gantt = new Gantt('#gantt', tasks);
+    try {
+        // Make sure Gantt is defined and create the chart
+        if (typeof Gantt !== 'undefined') {
+            const gantt = new Gantt("#gantt", tasks);
+            console.log('Gantt chart created successfully');
+        } else {
+            console.error('Gantt is not defined. Make sure the library is loaded correctly.');
+        }
+    } catch (error) {
+        console.error('Error creating Gantt chart:', error);
+    }
 });
