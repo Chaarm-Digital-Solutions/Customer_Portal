@@ -1,5 +1,5 @@
-import 'frappe-gantt';  // Just import the package name as the alias will handle the correct resolution
-import 'frappe-gantt/dist/frappe-gantt.css'; // Include the CSS for styling
+import '/node_modules/frappe-gantt/dist/frappe-gantt.umd.js';
+import '/node_modules/frappe-gantt/dist/frappe-gantt.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Example tasks for the Gantt chart
