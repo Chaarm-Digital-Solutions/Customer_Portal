@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
         on_click: (task) => {
             // console.log("Task clicked:", task);
         },
-        on_date_change: debounce((task, start, end) => {
+        on_date_change: 
+        // debounce(
+            (task, start, end) => {
             console.log(`Task ${task.name} changed dates: ${start} to ${end}`);
             fetch(`/tasks/update-dates`, {
                 method: 'POST',
@@ -58,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error updating task dates:', error);
             });
-        }, 1000), // Delay of 1000ms for date change
+        }, 
+        // 1000), // Delay of 1000ms for date change
         on_progress_change: debounce((task, progress) => {
             console.log(`Task ${task.name} progress changed to: ${progress}`);
             fetch(`/tasks/update-progress`, {
