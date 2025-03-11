@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const d = new Date(date);
         return d.toISOString().slice(0, 19).replace('T', ' ');
     };
-
+    
     // Store pending updates
     let pendingUpdates = {};
     let updateTimeout = null;
@@ -72,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const options = {
         infinite_padding: true,
         view_mode_select: true,
+        readonly_progress: true,
+        on_click: (task) => {
+            console.log(task);
+        },
         on_date_change: (task, start, end) => {
             debouncedUpdate(task, start, end); // Store the latest change and delay sending
         },
