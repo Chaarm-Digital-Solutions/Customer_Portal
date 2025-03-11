@@ -17,5 +17,8 @@ use Modules\GanttChart\App\Http\Controllers\TaskController;
 
 Route::group([], function () {
     Route::get('/ganttchart/{id}', [GanttChartController::class, 'index'])->name('gantt-chart');
-    Route::post('/updateTaskProperty', [TaskController::class, 'updateTaskProperty'])->name('task.update');
+    Route::post('/tasks/update-dates', [TaskController::class, 'updateTaskDates'])->name('task.update.dates');
+    Route::post('/tasks/update-progress', [TaskController::class, 'updateTaskProgress'])->name('task.update.progress');
+    Route::post('/tasks/add-dependency', [TaskController::class, 'addDependency'])->name('task.update.dependency.add');
+    Route::post('/tasks/remove-dependency', [TaskController::class, 'removeDependency'])->name('task.update.dependency.remove');
 });

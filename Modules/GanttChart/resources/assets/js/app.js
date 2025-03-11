@@ -24,15 +24,92 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         on_date_change: (task, start, end) => {
             console.log(`Task ${task.name} changed dates: ${start} to ${end}`);
+            fetch(`/tasks/update-dates`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: JSON.stringify({
+                    task_id: task.id,
+                    start: start,
+                    end: end
+                }),
+            })
+            .then(response => response.json())
+            .then(updatedTask => {
+                console.log('Task updated successfully:', updatedTask);
+                // Update local task data if necessary
+            })
+            .catch(error => {
+                console.error('Error updating task dates:', error);
+            });
         },
         on_progress_change: (task, progress) => {
             console.log(`Task ${task.name} progress changed to: ${progress}`);
+            fetch(`/tasks/update-progress`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: JSON.stringify({
+                    task_id: task.id,
+                    progress: progress
+                }),
+            })
+            .then(response => response.json())
+            .then(updatedTask => {
+                console.log('Task updated successfully:', updatedTask);
+                // Update local task data if necessary
+            })
+            .catch(error => {
+                console.error('Error updating task progress:', error);
+            });
         },
         on_dependency_create: (task1, task2) => {
             console.log(`Dependency created between ${task1.name} and ${task2.name}`);
+            fetch(`/tasks/add-dependency`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: JSON.stringify({
+                    task_id: task1.id,
+                    dependency: task2.id
+                }),
+            })
+            .then(response => response.json())
+            .then(updatedTask => {
+                console.log('Dependency added successfully:', updatedTask);
+                // Update local task data if necessary
+            })
+            .catch(error => {
+                console.error('Error creating dependency:', error);
+            });
         },
         on_dependency_remove: (task1, task2) => {
             console.log(`Dependency removed between ${task1.name} and ${task2.name}`);
+            fetch(`/tasks/remove-dependency`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: JSON.stringify({
+                    task_id: task1.id,
+                    dependency: task2.id
+                }),
+            })
+            .then(response => response.json())
+            .then(updatedTask => {
+                console.log('Dependency removed successfully:', updatedTask);
+                // Update local task data if necessary
+            })
+            .catch(error => {
+                console.error('Error removing dependency:', error);
+            });
         },
         on_task_create: (task) => {
             console.log(`Task created: ${task.name}`);
