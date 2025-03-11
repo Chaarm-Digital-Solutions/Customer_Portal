@@ -17,7 +17,7 @@ class TaskController extends Controller
     {
         $data = [
             'name' => request('task-name'),
-            'description' => request('description'),
+            'description' => request('task-description'),
             'start' => request('start-date'),
             'end' => request('end-date'),
             'progress' => request('progress'),
