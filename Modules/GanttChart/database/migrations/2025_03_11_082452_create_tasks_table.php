@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('project');
             $table->string('name');
+            $table->longText('description')->nullable();
             $table->timestamp('start');
             $table->timestamp('end');
             $table->tinyInteger('progress');

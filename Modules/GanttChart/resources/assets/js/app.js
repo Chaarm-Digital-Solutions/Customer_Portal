@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
             id: task.id,
             name: task.name,
+            description: task.description,
             start: task.start,  // Ensure the model has start_date
             end: task.end,      // Ensure the model has end_date
             progress: task.progress, // Ensure the model has progress
