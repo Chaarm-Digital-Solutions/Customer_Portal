@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\GanttChart\App\Http\Controllers\GanttChartController;
+use Modules\GanttChart\App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,5 @@ use Modules\GanttChart\App\Http\Controllers\GanttChartController;
 
 Route::group([], function () {
     Route::get('/ganttchart/{id}', [GanttChartController::class, 'index'])->name('gantt-chart');
+    Route::post('/updateTaskProperty', [TaskController::class, 'updateTaskProperty'])->name('task.update');
 });
