@@ -44,6 +44,33 @@ document.addEventListener('DOMContentLoaded', () => {
         step: 24, // default: 24 (in hours)
         header_height: 50, // default: 50
         language: "en",
+        on_click: (task) => {
+            console.log("Task clicked:", task);
+        },
+        on_date_change: (task, start, end) => {
+            console.log(`Task ${task.name} changed dates: ${start} to ${end}`);
+        },
+        on_progress_change: (task, progress) => {
+            console.log(`Task ${task.name} progress changed to: ${progress}`);
+        },
+        on_dependency_create: (task1, task2) => {
+            console.log(`Dependency created between ${task1.name} and ${task2.name}`);
+        },
+        on_dependency_remove: (task1, task2) => {
+            console.log(`Dependency removed between ${task1.name} and ${task2.name}`);
+        },
+        on_task_create: (task) => {
+            console.log(`Task created: ${task.name}`);
+        },
+        on_task_delete: (task) => {
+            console.log(`Task deleted: ${task.name}`);
+        },
+        on_view_change: (viewMode) => {
+            console.log(`View mode changed to: ${viewMode}`);
+        },
+        on_zoom_out: () => {
+            console.log("Zoomed out");
+        }
     };
 
     try {
@@ -57,4 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
         console.error('Error creating Gantt chart:', error);
     }
+
+    gantt.on("click", (task) => {
+        console.log("Task clicked:", task);
+    });
 });
