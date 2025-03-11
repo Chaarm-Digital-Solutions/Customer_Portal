@@ -4,15 +4,16 @@ namespace Modules\GanttChart\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\GanttChart\app\Models\Task;
 
 class GanttChartController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        $tasks = TaskController::getTasksByProject($id);
+        $tasks = Task::all();
         return view('ganttchart::index', compact('tasks'));
     }
 

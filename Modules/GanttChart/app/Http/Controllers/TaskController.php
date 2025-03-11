@@ -6,49 +6,59 @@ namespace Modules\GanttChart\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Modules\GanttChart\app\Models\Task;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
-    public static function getTasksByProject($project_id): Collection 
+    public function createTask(Request $request): RedirectResponse
     {
-        return Task::where('project', $project_id)->get();
+        $data = [
+            'name' => request('task-name'),
+            'description' => request('description'),
+            'start' => request('start-date'),
+            'end' => request('end-date'),
+            'progress' => request('progress'),
+        ];
+        Task::create($data);
+
+        return redirect()->back();
     }
 
     public function updateDatesBatch(Request $request)
-{
-    // Validate the incoming request
-    $validated = $request->validate([
-        'tasks' => 'required|array',
-        'tasks.*.task_id' => 'required|integer|exists:tasks,id',
-        'tasks.*.start' => 'required|date_format:Y-m-d H:i:s',
-        'tasks.*.end' => 'required|date_format:Y-m-d H:i:s',
-    ]);
+    {
+        // Validate the incoming request
+        $validated = $request->validate([
+            'tasks' => 'required|array',
+            'tasks.*.task_id' => 'required|integer|exists:tasks,id',
+            'tasks.*.start' => 'required|date_format:Y-m-d H:i:s',
+            'tasks.*.end' => 'required|date_format:Y-m-d H:i:s',
+        ]);
 
-    $tasksToUpdate = collect($validated['tasks']);
+        $tasksToUpdate = collect($validated['tasks']);
 
-    try {
-        // Use DB transaction for safe updates
-        DB::transaction(function () use ($tasksToUpdate) {
-            foreach ($tasksToUpdate as $taskData) {
-                Task::where('id', $taskData['task_id'])->update([
-                    'start' => $taskData['start'],
-                    'end' => $taskData['end'],
-                    'updated_at' => now(),
-                ]);
-            }
-        });
+        try {
+            // Use DB transaction for safe updates
+            DB::transaction(function () use ($tasksToUpdate) {
+                foreach ($tasksToUpdate as $taskData) {
+                    Task::where('id', $taskData['task_id'])->update([
+                        'start' => $taskData['start'],
+                        'end' => $taskData['end'],
+                        'updated_at' => now(),
+                    ]);
+                }
+            });
 
-        return response()->json([
-            'message' => 'Tasks updated successfully',
-            'updated_tasks' => $tasksToUpdate,
-        ], 200);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Failed to update tasks'], 500);
+            return response()->json([
+                'message' => 'Tasks updated successfully',
+                'updated_tasks' => $tasksToUpdate,
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to update tasks'], 500);
+        }
     }
-}
 
     public function updateTaskProgress(Request $request): JsonResponse
     {
