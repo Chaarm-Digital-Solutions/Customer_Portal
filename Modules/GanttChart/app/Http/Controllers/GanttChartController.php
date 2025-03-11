@@ -10,9 +10,10 @@ class GanttChartController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('ganttchart::index');
+        $tasks = TaskController::getTasksByProject($id);
+        return view('ganttchart::index', compact('tasks'));
     }
 
     /**
