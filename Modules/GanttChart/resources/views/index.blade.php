@@ -15,8 +15,12 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <svg id="gantt"></svg>
             </div>
-            <div class="mt-4 bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-ganttchart::create-task-form />
+            <div class="mt-4 flex justify-center">
+                <div class="flex flex-wrap gap-x-1 w-full">
+                    <x-ganttchart::create-task-form />
+                    <x-ganttchart::add-dependencies-form />
+                    <x-ganttchart::remove-dependencies-form />
+                </div>
             </div>
         </div>
     </div>
