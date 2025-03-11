@@ -14,15 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    console.log(tasks); // Check the output of tasks for debugging
+    // Create a debounce function
+    function debounce(func, delay) {
+        let timeoutId;
+        return function(...args) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                func(...args);
+            }, delay);
+        };
+    }
+
+    const formatDate = (date) => {
+        const d = new Date(date);
+        return d.toISOString().slice(0, 19).replace('T', ' '); // Remove 'Z' and get 'YYYY-MM-DD HH:MM:SS'
+    };
 
     const options = {
         infinite_padding: true,
         view_mode_select: true,
         on_click: (task) => {
-            console.log("Task clicked:", task);
+            // console.log("Task clicked:", task);
         },
-        on_date_change: (task, start, end) => {
+        on_date_change: debounce((task, start, end) => {
             console.log(`Task ${task.name} changed dates: ${start} to ${end}`);
             fetch(`/tasks/update-dates`, {
                 method: 'POST',
@@ -32,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({
                     task_id: task.id,
-                    start: start,
-                    end: end
+                    start: formatDate(start),
+                    end: formatDate(end) 
                 }),
             })
             .then(response => response.json())
@@ -44,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error updating task dates:', error);
             });
-        },
-        on_progress_change: (task, progress) => {
+        }, 1000), // Delay of 1000ms for date change
+        on_progress_change: debounce((task, progress) => {
             console.log(`Task ${task.name} progress changed to: ${progress}`);
             fetch(`/tasks/update-progress`, {
                 method: 'POST',
@@ -66,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error updating task progress:', error);
             });
-        },
+        }, 1000), // Delay of 1000ms for progress change
         on_dependency_create: (task1, task2) => {
             console.log(`Dependency created between ${task1.name} and ${task2.name}`);
             fetch(`/tasks/add-dependency`, {
@@ -118,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`Task deleted: ${task.name}`);
         },
         on_view_change: (viewMode) => {
-            console.log(`View mode changed to: ${viewMode}`);
+            // console.log(`View mode changed to: ${viewMode}`);
         },
         on_zoom_out: () => {
             console.log("Zoomed out");
