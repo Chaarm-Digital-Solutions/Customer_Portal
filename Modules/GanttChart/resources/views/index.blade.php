@@ -1,7 +1,6 @@
 @vite([
     'resources/js/app.js',  // Main app.js
     'modules/GanttChart/resources/assets/js/app.js', // Your GanttChart module JS
-    'node_modules/frappe-gantt/dist/frappe-gantt.css' // External CSS file
 ])
 
 <x-app-layout>
@@ -12,8 +11,7 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <svg id="gantt"></svg>
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" id="gantt">
             </div>
             <div class="mt-4 flex justify-center">
                 <div class="flex flex-wrap gap-x-1 w-full">
@@ -29,4 +27,14 @@
 <script>
     // Injecting the tasks data as a global JavaScript variable
     window.tasks = @json($tasks); // This will pass the tasks from the controller to the JavaScript
+    $(document).ready(function () {
+        $('.side-header').append(
+            `<select>
+                <option>Actions</option>
+                <option>Create task</option>
+                <option>Add relationship</option>
+                <option>Remove relationship</option>
+            </select>`
+        );
+    });
 </script>
