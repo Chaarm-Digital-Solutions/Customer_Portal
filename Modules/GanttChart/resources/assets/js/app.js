@@ -59,20 +59,47 @@ function drawChart() {
 
 // Events that happen upon the page load
 $(function() {
-
     // Modify available options on clicking the add dependency drop down
-    $('#add-dependency-task-name').click(function() {
+    $('#add-dependency-task-name').click(populateDependenciesToAdd);
 
-        // Empty the existing contents
-        $('#add-dependent-task-name').empty();
-
-        // Grab the id of the selected task and find the corresponding object
-        let taskId = $('#add-dependency-task-name').value();
-        let task = window.tasks.find(t => t.id === taskId);
-
-        // Get existing task dependencies so they won't be displayed
-        let dependencies = task.dependencies;
-        console.log(task);
-        console.log(dependencies);
-    });
+    // Execute the function immediately to populate the drop down on page load as well
+    populateDependenciesToAdd();
 });
+
+function populateDependenciesToAdd() {
+
+    // Empty the existing contents
+    $('#add-dependent-task-name').empty();
+
+    // Grab the id of the selected task and find the corresponding object
+    let taskId = parseInt($('#add-dependency-task-name').val());
+    let task = window.tasks.find(t => t.id === parseInt(taskId));
+
+    // Get existing task dependencies so they won't be displayed
+    let exclusions = task.dependencies 
+        ? task.dependencies.split(',').map(dep => parseInt(dep.trim()))
+        : [];
+    
+    // Add the selected task's ID to the exclusions so it won't be displayed as an available dependency
+    exclusions.push(taskId);
+
+    // Filter the tasks to show only the available dependencies to add 
+    let availableDependencies = window.tasks.filter(t => !exclusions.includes(t.id));
+    
+    // Populate the select element with options depending on the available dependencies
+    if (availableDependencies.length > 0) {
+        availableDependencies.forEach(function (t) {
+            $('#add-dependent-task-name').append(
+                `<option value="${t.id}">
+                    ${t.name}
+                </option>`
+            );
+        });
+    } else {
+        $('#add-dependent-task-name').append(
+            `<option value="">
+                No available dependencies to add.
+            </option>`
+        );
+    }
+}

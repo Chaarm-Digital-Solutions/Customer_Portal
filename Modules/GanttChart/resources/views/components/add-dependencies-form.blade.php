@@ -3,7 +3,7 @@
 <div id="controls-container" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md md:w-1/4">
     <form action="{{ route('task.dependency.add') }}" id="add-task" method="POST" class="space-y-4">
         @csrf
-        <h2 class="text-xl font-semibold text-gray-800">Remove dependency</h2>
+        <h2 class="text-xl font-semibold text-gray-800">Add dependency</h2>
 
         <!-- Task Name -->
         <div>
