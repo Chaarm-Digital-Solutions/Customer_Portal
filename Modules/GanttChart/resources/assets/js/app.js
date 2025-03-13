@@ -56,3 +56,23 @@ function drawChart() {
     const chart = new google.visualization.Gantt(document.getElementById('gantt'));
     chart.draw(data, options);
 }
+
+// Events that happen upon the page load
+$(function() {
+
+    // Modify available options on clicking the add dependency drop down
+    $('#add-dependency-task-name').click(function() {
+
+        // Empty the existing contents
+        $('#add-dependent-task-name').empty();
+
+        // Grab the id of the selected task and find the corresponding object
+        let taskId = $('#add-dependency-task-name').value();
+        let task = window.tasks.find(t => t.id === taskId);
+
+        // Get existing task dependencies so they won't be displayed
+        let dependencies = task.dependencies;
+        console.log(task);
+        console.log(dependencies);
+    });
+});

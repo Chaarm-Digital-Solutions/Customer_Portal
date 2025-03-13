@@ -1,3 +1,5 @@
+@props(['tasks'])
+
 <div id="controls-container" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md md:w-1/4">
     <form action="{{ route('task.dependency.add') }}" id="add-task" method="POST" class="space-y-4">
         @csrf
@@ -19,11 +21,6 @@
         <div>
             <label for="task-dependency" class="block text-sm font-medium text-gray-700">...add this dependency:</label>
             <select name="task-dependency" id="add-dependent-task-name">
-                @foreach ($tasks as $task)
-                    <option value="{{ $task->id }}">
-                        {{ $task->name }}
-                    </option>
-                @endforeach
             </select>
         </div>
 
