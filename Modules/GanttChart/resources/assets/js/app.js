@@ -8,9 +8,11 @@ function daysToMilliseconds(days) {
 
 function drawChart() {
     if (!window.tasks || window.tasks.length === 0) {
-        console.error("No task data available");
+        console.error("No task data available or tasks are empty.");
         return;
     }
+
+    console.log("Raw window.tasks:", window.tasks); // Debugging
 
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Task ID');
@@ -21,15 +23,36 @@ function drawChart() {
     data.addColumn('number', 'Percent Complete');
     data.addColumn('string', 'Dependencies');
 
-    const formattedTasks = window.tasks.map(task => [
-        task.id.toString(),           // Task ID (string)
-        task.name,                    // Task Name (string)
-        task.start_date ? new Date(task.start_date) : null, // Start Date (Date object)
-        task.end_date ? new Date(task.end_date) : null,     // End Date (Date object)
-        task.duration ? daysToMilliseconds(task.duration) : null, // Duration in milliseconds
-        task.percent_complete || 0,   // Percent Complete (number)
-        task.dependencies || null     // Dependencies (string)
-    ]);
+    const formattedTasks = window.tasks.map(task => {
+        if (!task.start || !task.end) {
+            console.warn("Skipping task due to missing dates:", task);
+            return null;
+        }
+
+        // Convert "YYYY-MM-DD HH:MM:SS" to Date object
+        const startDate = new Date(task.start.replace(" ", "T")); // Fixes parsing
+        const endDate = new Date(task.end.replace(" ", "T"));
+
+        // Check if parsing was successful
+        if (isNaN(startDate) || isNaN(endDate)) {
+            console.warn("Invalid date detected, skipping task:", task);
+            return null;
+        }
+
+        const duration = endDate - startDate; // Calculate duration in milliseconds
+
+        return [
+            task.id.toString(),  // Task ID (string)
+            task.name,           // Task Name (string)
+            startDate,           // Start Date (Date object)
+            endDate,             // End Date (Date object)
+            duration,            // Duration in milliseconds
+            task.progress || 0,  // Percent Complete (number)
+            task.dependencies || null  // Dependencies (string)
+        ];
+    }).filter(Boolean); // Remove null entries
+
+    console.log("Formatted Data:", formattedTasks); // Debugging
 
     data.addRows(formattedTasks);
 
