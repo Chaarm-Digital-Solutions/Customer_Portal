@@ -16,8 +16,8 @@
             <div class="mt-4 flex justify-center">
                 <div class="flex flex-wrap gap-x-1 w-full">
                     <x-ganttchart::create-task-form />
-                    <x-ganttchart::add-dependencies-form />
-                    <x-ganttchart::remove-dependencies-form />
+                    {{-- <x-ganttchart::add-dependencies-form /> --}}
+                    <x-ganttchart::remove-dependencies-form /> 
                 </div>
             </div>
         </div>

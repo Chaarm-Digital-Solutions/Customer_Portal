@@ -20,6 +20,6 @@ Route::group([], function () {
     Route::post('/tasks/create', [TaskController::class, 'createTask'])->name('task.create');
     Route::post('/tasks/update-dates-batch', [TaskController::class, 'updateDatesBatch'])->name('task.update.dates');
     Route::post('/tasks/update-progress', [TaskController::class, 'updateTaskProgress'])->name('task.update.progress');
-    Route::post('/tasks/add-dependency', [TaskController::class, 'addDependency'])->name('task.update.dependency.add');
-    Route::post('/tasks/remove-dependency', [TaskController::class, 'removeDependency'])->name('task.update.dependency.remove');
+    Route::post('/tasks/add-dependency', [TaskController::class, 'addDependency'])->name('task.dependency.add');
+    Route::post('/tasks/remove-dependency', [TaskController::class, 'removeDependency'])->name('task.dependency.remove');
 });
