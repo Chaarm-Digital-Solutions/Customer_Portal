@@ -7,6 +7,11 @@ function daysToMilliseconds(days) {
 }
 
 function drawChart() {
+    if (!window.tasks || window.tasks.length === 0) {
+        console.error("No task data available");
+        return;
+    }
+
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Task ID');
     data.addColumn('string', 'Task Name');
@@ -16,13 +21,17 @@ function drawChart() {
     data.addColumn('number', 'Percent Complete');
     data.addColumn('string', 'Dependencies');
 
-    data.addRows([
-        ['Research', 'Find sources', new Date(2015, 0, 1), new Date(2015, 0, 5), null,  100,  null],
-        ['Write', 'Write paper', null, new Date(2015, 0, 9), daysToMilliseconds(3), 25, 'Research,Outline'],
-        ['Cite', 'Create bibliography', null, new Date(2015, 0, 7), daysToMilliseconds(1), 20, 'Research'],
-        ['Complete', 'Hand in paper', null, new Date(2015, 0, 10), daysToMilliseconds(1), 0, 'Cite,Write'],
-        ['Outline', 'Outline paper', null, new Date(2015, 0, 6), daysToMilliseconds(1), 100, 'Research']
+    const formattedTasks = window.tasks.map(task => [
+        task.id.toString(),           // Task ID (string)
+        task.name,                    // Task Name (string)
+        task.start_date ? new Date(task.start_date) : null, // Start Date (Date object)
+        task.end_date ? new Date(task.end_date) : null,     // End Date (Date object)
+        task.duration ? daysToMilliseconds(task.duration) : null, // Duration in milliseconds
+        task.percent_complete || 0,   // Percent Complete (number)
+        task.dependencies || null     // Dependencies (string)
     ]);
+
+    data.addRows(formattedTasks);
 
     const options = { height: 275 };
     const chart = new google.visualization.Gantt(document.getElementById('gantt'));

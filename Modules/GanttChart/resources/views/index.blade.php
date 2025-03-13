@@ -25,16 +25,5 @@
 </x-app-layout>
 
 <script>
-    // Injecting the tasks data as a global JavaScript variable
     window.tasks = @json($tasks); // This will pass the tasks from the controller to the JavaScript
-    $(document).ready(function () {
-        $('.side-header').append(
-            `<select>
-                <option>Actions</option>
-                <option>Create task</option>
-                <option>Add relationship</option>
-                <option>Remove relationship</option>
-            </select>`
-        );
-    });
 </script>
