@@ -74,7 +74,7 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($request->task_id);
 
-        $task->dependencies = $task->dependencies . $request->task_dependency . ', ';
+        $task->dependencies = $task->dependencies . $request->task_dependency . ',';
         $task->save();
 
         return redirect()->back()->with('success', 'Dependency successfully added.');
@@ -84,7 +84,8 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($request->task_id);
 
-        $task->dependencies = str_replace($request->task_dependency . ', ', '', $task->dependencies);
+        $task->dependencies = str_replace($request->task_dependency . ',', '', $task->dependencies);
+        $task->save();
 
         return redirect()->back()->with('success', 'Dependency successfully removed.');;
     }
