@@ -7,8 +7,8 @@
 
         <!-- Task Name -->
         <div>
-            <label for="task-name" class="block text-sm font-medium text-gray-700">To the task...</label>
-            <select name="task-name" id="add-dependency-task-name">
+            <label for="task_id" class="block text-sm font-medium text-gray-700">Make this task...</label>
+            <select name="task_id" id="add-dependency-task-name">
                 @foreach ($tasks as $task)
                     <option value="{{ $task->id }}">
                         {{ $task->name }}
@@ -19,8 +19,8 @@
 
         <!-- Description -->
         <div>
-            <label for="task-dependency" class="block text-sm font-medium text-gray-700">...add this dependency:</label>
-            <select name="task-dependency" id="add-dependent-task-name">
+            <label for="task_dependency" class="block text-sm font-medium text-gray-700">...dependent on this one:</label>
+            <select name="task_dependency" id="add-dependent-task-name">
             </select>
         </div>
 

@@ -69,18 +69,14 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
-    public function addDependency(Request $request): JsonResponse
+    public function addDependency(Request $request): RedirectResponse
     {
         $task = Task::findOrFail($request->task_id);
 
-        if (str_contains($task->dependencies, $request->dependency . ', ')) {
-            return response()->json('Dependency already exists');
-        } else {
-            $task->dependencies = $task->dependencies . $request->dependency . ', ';
-            $task->save();
+        $task->dependencies = $task->dependencies . $request->task_dependency . ', ';
+        $task->save();
 
-            return response()->json($task);
-        }
+        return redirect()->back();
     }
 
     public function removeDependency(Request $request): JsonResponse
