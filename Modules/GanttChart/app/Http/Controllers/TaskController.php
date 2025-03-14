@@ -18,6 +18,7 @@ class TaskController extends Controller
         $data = [
             'name' => request('task-name'),
             'description' => request('task-description'),
+            'type' => request('task-type'),
             'start' => request('start-date'),
             'end' => request('end-date'),
             'progress' => request('progress'),
@@ -76,20 +77,15 @@ class TaskController extends Controller
         $task->dependencies = $task->dependencies . $request->task_dependency . ', ';
         $task->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Dependency successfully added.');
     }
 
-    public function removeDependency(Request $request): JsonResponse
+    public function removeDependency(Request $request): RedirectResponse
     {
         $task = Task::findOrFail($request->task_id);
 
-        if (str_contains($task->dependencies, $request->dependency . ', ')) {
-            $task->dependencies = str_replace($request->dependency . ', ', '', $task->dependencies);
-            $task->save();
+        $task->dependencies = str_replace($request->task_dependency . ', ', '', $task->dependencies);
 
-            return response()->json($task);
-        } else {
-            return response()->json('Dependency does not exist');
-        }
+        return redirect()->back()->with('success', 'Dependency successfully removed.');;
     }
 }

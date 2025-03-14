@@ -10,6 +10,17 @@
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
         </div>
 
+         <!-- Task Name -->
+         <div>
+            <label for="task-type" class="block text-sm font-medium text-gray-700">Task Type</label>
+            <select id="task-type" name="task-type" required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                <option value="task">Task</option>
+                <option value="milestone">Milestone</option>
+                <option value="phase">Phase</option>
+            </select>
+        </div>
+
         <!-- Description -->
         <div>
             <label for="task-description" class="block text-sm font-medium text-gray-700">Description</label>

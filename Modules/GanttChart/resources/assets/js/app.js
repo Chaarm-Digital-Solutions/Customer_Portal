@@ -10,9 +10,6 @@ function drawChart() {
         return;
     }
 
-    // For debugging purposes
-    console.log("Raw window.tasks:", window.tasks); 
-
     // Initialise the chart
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Task ID');
@@ -43,9 +40,6 @@ function drawChart() {
         ];
     }).filter(Boolean); // Remove null entries
 
-    // For debugging purposes
-    console.log("Formatted Data:", formattedTasks);
-
     // Add data to the chart
     data.addRows(formattedTasks);
 
@@ -61,9 +55,11 @@ function drawChart() {
 $(function() {
     // Modify available options on clicking the add dependency drop down
     $('#add-dependency-task-name').click(populateDependenciesToAdd);
+    $('#remove-dependency-task-name').click(populateDependenciesToRemove);
 
     // Execute the function immediately to populate the drop down on page load as well
     populateDependenciesToAdd();
+    populateDependenciesToRemove();
 });
 
 function populateDependenciesToAdd() {
@@ -77,7 +73,7 @@ function populateDependenciesToAdd() {
 
     // Get existing task dependencies so they won't be displayed
     let exclusions = task.dependencies 
-        ? task.dependencies.split(',').map(dep => parseInt(dep.trim()))
+        ? task.dependencies.split(', ').map(dep => parseInt(dep.trim()))
         : [];
     
     // Add the selected task's ID to the exclusions so it won't be displayed as an available dependency
@@ -98,7 +94,41 @@ function populateDependenciesToAdd() {
     } else {
         $('#add-dependent-task-name').append(
             `<option value="">
-                No available dependencies to add.
+                No dependencies to add.
+            </option>`
+        );
+    }
+}
+
+function populateDependenciesToRemove() {
+
+    // Empty the existing contents
+    $('#remove-dependent-task-name').empty();
+
+    // Grab the id of the selected task and find the corresponding object
+    let taskId = parseInt($('#remove-dependency-task-name').val());
+    let task = window.tasks.find(t => t.id === parseInt(taskId));
+
+    // Get existing task dependencies to display them later
+    let dependencyIds = task.dependencies 
+        ? task.dependencies.split(', ').map(dep => parseInt(dep.trim()))
+        : [];
+    
+    let dependencies = window.tasks.filter(t => dependencyIds.includes(t.id));
+    
+    // Populate the select element with options depending on the available dependencies
+    if (dependencyIds.length > 0) {
+        dependencyIds.forEach(function (t) {
+            $('#remove-dependent-task-name').append(
+                `<option value="${t}">
+                    ${t}
+                </option>`
+            );
+        });
+    } else {
+        $('#remove-dependent-task-name').append(
+            `<option value="">
+                No dependencies to remove.
             </option>`
         );
     }
